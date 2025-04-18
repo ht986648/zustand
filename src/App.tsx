@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import { useTodoStore } from './store'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Checkbox } from "@/components/ui/checkbox"
 
 function App() {
   const [newTodo, setNewTodo] = useState('')
@@ -26,7 +29,7 @@ function App() {
         gap: '1rem',
         marginBottom: '2rem'
       }}>
-        <input
+        <Input
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
@@ -38,7 +41,7 @@ function App() {
             border: '1px solid #ccc'
           }}
         />
-        <button type="submit">Add</button>
+        <Button >Add</Button>
       </form>
 
       <div style={{ 
@@ -65,13 +68,13 @@ function App() {
               onChange={() => toggleTodo(todo.id)}
             />
             <span style={{ flex: 1 }}>{todo.text}</span>
-            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+            <Button onClick={() => deleteTodo(todo.id)}>Delete</Button>
           </div>
         ))}
       </div>
 
       {todos.some(todo => todo.completed) && (
-        <button 
+        <Button 
           onClick={clearCompleted}
           style={{ 
             marginTop: '1rem',
@@ -79,7 +82,7 @@ function App() {
           }}
         >
           Clear Completed
-        </button>
+        </Button>
       )}
     </div>
   )
